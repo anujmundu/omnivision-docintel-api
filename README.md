@@ -143,3 +143,17 @@ Open [http://localhost:8503](http://localhost:8503) in your browser. Drag and dr
 ```bash
 pytest tests/ -v
 ```
+
+---
+
+## 🧑‍💻 Author & Contact
+
+**Anuj Mundu**  
+*Machine Learning & Computer Vision Engineer | Python Backend Developer*  
+
+- **GitHub:** [@anujmundu](https://github.com/anujmundu)
+- **Repository:** [omnivision-docintel-api](https://github.com/anujmundu/omnivision-docintel-api)
+- **Email:** [anujmark.edwin.ame@gmail.com](mailto:anujmark.edwin.ame@gmail.com)
+
+⭐ *Contributions, issues, and feature requests are welcome! Feel free to star this repository if you find it valuable.*
+
