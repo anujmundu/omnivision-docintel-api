@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omnivision-docintel-api"
+version = "1.0.0"
+description = "Enterprise Document AI, Multimodal VLM, Digital Forgery Forensics & Streaming REST Microservice"
+readme = "README.md"
+authors = [{ name = "Anuj" }]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Framework :: FastAPI",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.0",
+    "python-multipart>=0.0.9",
+    "numpy>=1.26.0",
+    "pillow>=10.2.0",
+    "opencv-python-headless>=4.9.0",
+    "prometheus-client>=0.19.0",
+    "pytest>=8.0.0",
+    "httpx>=0.26.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q --import-mode=importlib"
+testpaths = ["tests"]
+pythonpath = ["."]
