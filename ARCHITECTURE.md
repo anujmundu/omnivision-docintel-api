@@ -8,35 +8,41 @@
 OmniVision-DocIntel is a hardened, production-ready asynchronous microservice built on FastAPI, OpenCV, and Multimodal Vision-Language heuristics. It combines pre-flight image quality validation, Error Level Analysis (ELA) pixel tampering forensics, zero-shot document classification, and real-time Server-Sent Events (SSE) streaming.
 
 ```mermaid
-graph TD
-    subgraph Client & Edge Layer
-        Client[Client Application / Webhook] --> Gate[FastAPI ASGI Gateway]
-        Studio[Streamlit Interactive Studio Port 8503] --> Gate
+flowchart TD
+    subgraph ClientEdge["Client & Edge Layer"]
+        Client["Client Application / Webhook"] --> Gate["FastAPI ASGI Gateway"]
+        Studio["Streamlit Interactive Studio (Port 8503)"] --> Gate
     end
 
-    subgraph Security & Traffic Control
-        Gate --> Sec[Token-Bucket Rate Limiter<br/>60 req/min]
-        Sec --> Auth[X-API-Key Validator<br/>Header Enforcement]
+    subgraph SecurityControl["Security & Traffic Control"]
+        Gate --> Sec["Token-Bucket Rate Limiter<br/>(60 req/min)"]
+        Sec --> Auth["X-API-Key Validator<br/>(Header Enforcement)"]
     end
 
-    subgraph V1 API Microservice Layer
-        Auth --> R1[POST /document/audit<br/>OpenCV CV Quality Check]
-        Auth --> R2[POST /document/forensics<br/>Error Level Analysis ELA]
-        Auth --> R3[POST /document/extract<br/>VLM & Structured Entity Parsing]
-        Auth --> R4[POST /document/classify<br/>Zero-Shot Document Classifier]
-        Auth --> R5[GET /document/stream-audit<br/>Server-Sent Events SSE Stream]
+    subgraph APILayer["V1 API Microservice Layer"]
+        Auth --> R1["POST /document/audit<br/>(OpenCV CV Quality Check)"]
+        Auth --> R2["POST /document/forensics<br/>(Error Level Analysis ELA)"]
+        Auth --> R3["POST /document/extract<br/>(VLM & Structured Entity Parsing)"]
+        Auth --> R4["POST /document/classify<br/>(Zero-Shot Document Classifier)"]
+        Auth --> R5["GET /document/stream-audit<br/>(Server-Sent Events SSE Stream)"]
     end
 
-    subgraph Service & Engine Layer
-        R1 --> S1[VisionQualityService<br/>Laplacian Blur & Skew Angle]
-        R2 --> S2[DocumentForensicsService<br/>Compression Residual Divergence]
-        R3 --> S3[MultimodalVLMService<br/>Semantic Key-Value Extraction]
-        R4 --> S4[DocumentClassifierService<br/>Invoice, Receipt, ID Card, Contract]
+    subgraph EngineLayer["Service & Engine Layer"]
+        R1 --> S1["VisionQualityService<br/>(Laplacian Blur & Skew Angle)"]
+        R2 --> S2["DocumentForensicsService<br/>(Compression Residual Divergence)"]
+        R3 --> S3["MultimodalVLMService<br/>(Semantic Key-Value Extraction)"]
+        R4 --> S4["DocumentClassifierService<br/>(Invoice, Receipt, ID Card, Contract)"]
     end
 
-    subgraph Telemetry & Production Observability
-        S1 & S2 & S3 & S4 --> Obs1[Prometheus Telemetry /metrics]
-        S1 & S2 & S3 & S4 --> Obs2[Structured OpenAPI 3.0 Contract /docs]
+    subgraph Observability["Telemetry & Production Observability"]
+        S1 --> Obs1["Prometheus Telemetry (/metrics)"]
+        S2 --> Obs1
+        S3 --> Obs1
+        S4 --> Obs1
+        S1 --> Obs2["Structured OpenAPI 3.0 Contract (/docs)"]
+        S2 --> Obs2
+        S3 --> Obs2
+        S4 --> Obs2
     end
 ```
 

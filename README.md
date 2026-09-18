@@ -98,17 +98,23 @@ Organizations processing high volumes of incoming customer documents, invoices, 
 ## 🏗️ Architecture & Component Flow
 
 ```mermaid
-graph TD
-    Client[Client App / Webhook] --> Gate[FastAPI Ingestion Boundary]
-    Gate --> Security[X-API-Key & Token-Bucket Rate Limiter]
-    Security --> Router{V1 API Router}
-    Router -->|/document/audit| Vision[OpenCV Blur & Skew Engine]
-    Router -->|/document/forensics| Forensics[ELA Digital Forgery & Splicing]
-    Router -->|/document/extract| OCR[Structured Entity Extraction]
-    Router -->|/document/classify| Classifier[Document Type Classifier]
-    Router -->|/document/stream-audit| Stream[Real-Time Server-Sent Events SSE]
-    Vision & Forensics & OCR & Stream --> Metrics[Prometheus Telemetry /metrics]
-    Vision & Forensics & OCR & Stream --> Resp[Structured JSON Contract]
+flowchart TD
+    Client["Client App / Webhook"] --> Gate["FastAPI Ingestion Boundary"]
+    Gate --> Security["X-API-Key & Token-Bucket Rate Limiter"]
+    Security --> Router{"V1 API Router"}
+    Router -->|/document/audit| Vision["OpenCV Blur & Skew Engine"]
+    Router -->|/document/forensics| Forensics["ELA Digital Forgery & Splicing"]
+    Router -->|/document/extract| OCR["Structured Entity Extraction"]
+    Router -->|/document/classify| Classifier["Document Type Classifier"]
+    Router -->|/document/stream-audit| Stream["Real-Time Server-Sent Events (SSE)"]
+    Vision --> Metrics["Prometheus Telemetry (/metrics)"]
+    Forensics --> Metrics
+    OCR --> Metrics
+    Stream --> Metrics
+    Vision --> Resp["Structured JSON Contract"]
+    Forensics --> Resp
+    OCR --> Resp
+    Stream --> Resp
 ```
 
 ---
