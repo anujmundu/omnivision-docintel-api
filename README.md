@@ -1,12 +1,14 @@
 # OmniVision Agentic™ (2026 Edition)
 ### Enterprise Document AI, Multimodal VLM, Digital Forgery Forensics & Streaming REST Microservice
 
-[![CI Pipeline](https://img.shields.io/badge/CI%20Pipeline-9%2F9%20Passing-success?style=for-the-badge&logo=github-actions)](https://github.com)
+[![CI Pipeline](https://img.shields.io/badge/CI%20Pipeline-9%2F9%20Passing-success?style=for-the-badge&logo=github-actions)](https://github.com/anujmundu/omnivision-docintel-api/actions)
+[![Streamlit Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=anujmundu%2Fomnivision-docintel-api&branch=main&main_file=streamlit_app.py)
 [![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 [![API Framework](https://img.shields.io/badge/API%20Framework-FastAPI%20Async-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Computer Vision](https://img.shields.io/badge/Computer%20Vision-OpenCV%20%26%20ELA-5C3EE8?style=for-the-badge&logo=opencv)](https://opencv.org/)
 [![Docker](https://img.shields.io/badge/Container-Sub--200%20MB%20Docker-2496ED?style=for-the-badge&logo=docker)](https://docker.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
 
 > **Role Fit:** Python Backend Engineer | AI / ML API Developer | Computer Vision Engineer  
 > **Key Tech Stack:** FastAPI, Uvicorn, OpenCV (cv2), Pillow, Pydantic v2, Docker, Prometheus, Streamlit, SSE.  
